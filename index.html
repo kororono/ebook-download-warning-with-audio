@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Warning</title>
+    <style>
+        /* Styling for the page */
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .info-box {
+            border: 2px solid white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 500px;
+        }
+        h1 {
+            color: red; /* Make the warning title stand out */
+        }
+        p {
+            margin: 10px 0;
+        }
+        .warning-message {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        #download-btn {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function playAudio() {
+            var audio = document.getElementById("warning-audio");
+            var downloadBtn = document.getElementById("download-btn");
+
+            audio.play();
+
+            // When the audio ends, show the download button
+            audio.onended = function() {
+                downloadBtn.style.display = "inline-block";
+            };
+        }
+
+        function redirectToDownload() {
+            alert("Warning: Sharing this document will lead to disqualification. We have your contact details and will notify you of any rule violations.");
+            window.location.href = "https://example.com/your-download-link.pdf"; // Replace with your actual download link
+        }
+    </script>
+</head>
+<body>
+    <h1>Warning!</h1>
+    <div class="info-box">
+        <p>Your digital trace has been recorded. Before you proceed, listen carefully to the following message.</p>
+        <button onclick="playAudio()">Listen to the Warning</button>
+        <audio id="warning-audio" src="warning-message.mp3"></audio> <!-- Replace with your actual audio file -->
+    </div>
+    <button id="download-btn" onclick="redirectToDownload()">Continue to Download</button>
+</body>
+</html>
